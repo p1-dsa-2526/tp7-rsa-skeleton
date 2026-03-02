@@ -5,7 +5,7 @@ execute_process(
 )
 
 if(NOT EXISTS ${XML_TO_MD_EXECUTABLE})
-    message(FATAL_ERROR "Executable '${XML_TO_MD_EXECUTABLE}' not found.")
+    message(WARNING "Executable '${XML_TO_MD_EXECUTABLE}' not found.")
 endif()
 # Run the conversion
 execute_process(

@@ -11,6 +11,7 @@ set(XML_TO_MD_EXECUTABLE "${CMAKE_BINARY_DIR}/xml_to_md.exe")
 
 # Collect all source files (excluding test files and main.c)
 file(GLOB LIB_SOURCES "*.c")
+message("All source files: ${LIB_SOURCES}")
 list(FILTER LIB_SOURCES EXCLUDE REGEX "test_.*\\.c$")
 list(FILTER LIB_SOURCES EXCLUDE REGEX "main\\.c$")
 
@@ -19,6 +20,11 @@ add_executable(RSA main.c ${LIB_SOURCES})
 
 # Auto-discover test files and create test executables
 enable_testing()
+
+#add a dummy test to clean up old reports before running new tests
+add_test(NAME CLEANING_TEST_REPORT COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_SOURCE_DIR}/test_reports/all_tests.md)
+set_tests_properties(CLEANING_TEST_REPORT PROPERTIES FIXTURE_SETUP clean_fixture LABELS "CLEANUP")
+
 file(GLOB TEST_FILES "${TESTING_DIR}/test_*.c")
 
 foreach(TEST_FILE ${TEST_FILES})
@@ -32,7 +38,9 @@ foreach(TEST_FILE ${TEST_FILES})
             COMMAND $<TARGET_FILE:${TEST_NAME}> run --output=${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml || ${CMAKE_COMMAND} -E true
             # echo "Running ${TEST_NAME} and generating XML report..."
             COMMAND ${CMAKE_COMMAND} -E echo "Running ${TEST_NAME} and generating XML report..."
-            COMMAND ${XML_TO_MD_EXECUTABLE} ${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml)
+            COMMAND ${XML_TO_MD_EXECUTABLE} ${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml
+    )
+
 
 
     file(READ ${TEST_FILE} TEST_SOURCE)
@@ -47,9 +55,9 @@ foreach(TEST_FILE ${TEST_FILES})
                 -DFILTER=${TEST_CASE}
                 -DXML_REPORT=${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.${TEST_CASE}.xml
                 -DXML_TO_MD_EXECUTABLE=${XML_TO_MD_EXECUTABLE}
-                -P "${CMAKE_CURRENT_SOURCE_DIR}/run_tests.cmake"
+                -P "${TESTING_DIR}/run_tests.cmake"
         )
-        set_tests_properties(${TEST_NAME}.${TEST_CASE} PROPERTIES TIMEOUT 30 LABELS "unit")
+        set_tests_properties(${TEST_NAME}.${TEST_CASE} PROPERTIES TIMEOUT 30 LABELS "unit" FIXTURE_REQUIRED clean_fixture)
     endforeach()
 
 
@@ -73,9 +81,3 @@ if(NOT EXISTS ${XML_TO_MD_EXECUTABLE})
     endif()
 endif()
 
-# Silent target to delete and copy files
-add_custom_target(silent_target
-        COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_SOURCE_DIR}/test_reports/all_tests.md
-        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/testing/all_tests.md ${CMAKE_SOURCE_DIR}/test_reports/all_tests.md
-        COMMENT "Silently deleting and copying files..."
-)
