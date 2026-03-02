@@ -9,12 +9,12 @@
 UTEST(generate_rsa_keys, key_generation)
 {
     t_RSA_keys keys = generate_rsa_keys(300, 700);
-    char msg_p[50], msg_q[50], msg_n[50], msg_e[50], msg_d[50];
-    sprintf(msg_p, "test if p is prime, got %lu", keys.p);
-    sprintf(msg_q, "test if q is prime, got %lu", keys.q);
-    sprintf(msg_n, "test if n is product of p and q, got %lu", keys.n);
-    sprintf(msg_e, "test if e is coprime to (p-1)(q-1), got %lu", keys.e);
-    sprintf(msg_d, "test if d is modular inverse of e mod (p-1)(q-1), got %lu", keys.d);
+    char msg_p[150], msg_q[150], msg_n[150], msg_e[150], msg_d[150];
+    sprintf(msg_p, "`generate_rsa_keys` gives p=%lu - %lu is not considered prime by `isprime`", keys.p, keys.p);
+    sprintf(msg_q, "`generate_rsa_keys` gives q=%lu - %lu is not considered prime by `isprime`", keys.q, keys.q);
+    sprintf(msg_n, "`generate_rsa_keys` gives n=%lu - expected n=%lu = p=%lu . q=%lu", keys.n, keys.p*keys.q, keys.p, keys.q);
+    sprintf(msg_e, "`generate_rsa_keys` gives e=%lu - %lu is not coprime to phi(n)=(p-1).(q-1)=%lu", keys.e, keys.e, (keys.p-1)*(keys.q-1));
+    sprintf(msg_d, "`generate_rsa_keys` gives d=%lu - d does not satisfy (e*d)[phi(n)] = 1", keys.d);
     UTEST_TRUE(isprime(keys.p), msg_p, 1);
     UTEST_TRUE(isprime(keys.q), msg_q, 1);
     UTEST_TRUE(keys.n == keys.p * keys.q, msg_n, 1);

@@ -24,7 +24,7 @@ file(GLOB TEST_FILES "${TESTING_DIR}/test_*.c")
 foreach(TEST_FILE ${TEST_FILES})
     get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
 
-    add_executable(${TEST_NAME} ${TEST_FILE} ${LIB_SOURCES})
+   add_executable(${TEST_NAME} ${TEST_FILE} ${LIB_SOURCES})
 
     add_custom_command(
             TARGET ${TEST_NAME}
@@ -32,8 +32,8 @@ foreach(TEST_FILE ${TEST_FILES})
             COMMAND $<TARGET_FILE:${TEST_NAME}> run --output=${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml || ${CMAKE_COMMAND} -E true
             # echo "Running ${TEST_NAME} and generating XML report..."
             COMMAND ${CMAKE_COMMAND} -E echo "Running ${TEST_NAME} and generating XML report..."
-            COMMAND ${XML_TO_MD_EXECUTABLE} ${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml
-    )
+            COMMAND ${XML_TO_MD_EXECUTABLE} ${CMAKE_SOURCE_DIR}/test_reports/${TEST_NAME}.xml)
+
 
     file(READ ${TEST_FILE} TEST_SOURCE)
     string(REGEX MATCHALL "UTEST\\([^,]+,[^)]+\\)" TEST_MATCHES "${TEST_SOURCE}")
@@ -72,3 +72,10 @@ if(NOT EXISTS ${XML_TO_MD_EXECUTABLE})
         message(FATAL_ERROR "Failed to build 'xml_to_md.exe': ${BUILD_ERROR}")
     endif()
 endif()
+
+# Silent target to delete and copy files
+add_custom_target(silent_target
+        COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_SOURCE_DIR}/test_reports/all_tests.md
+        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/testing/all_tests.md ${CMAKE_SOURCE_DIR}/test_reports/all_tests.md
+        COMMENT "Silently deleting and copying files..."
+)

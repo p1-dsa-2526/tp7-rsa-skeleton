@@ -792,8 +792,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : (");                                          \
       UTEST_PRINTF("%s) " #cond " (%s", xAsString, yAsString);                 \
-      UTEST_PRINTF(")\n");                                                     \
-      UTEST_PRINTF("    Actual : ");                                           \
+      UTEST_PRINTF(") | ");                                                     \
+      UTEST_PRINTF("Actual : ");                                           \
       utest_type_printer(xEval);                                               \
       UTEST_PRINTF(" vs ");                                                    \
       utest_type_printer(yEval);                                               \
@@ -813,7 +813,7 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
 #define UTEST_COND(x, y, cond, msg, is_assert)                                 \
   UTEST_SURPRESS_WARNING_BEGIN do {                                            \
     if (!((x)cond(y))) {                                                       \
-      UTEST_PRINTF("%s:%i: Failure (Expected " #cond " Actual)", __FILE__,     \
+      UTEST_PRINTF("%s:%i: Failure (Expected " #cond " got)", __FILE__,     \
                    __LINE__);                                                  \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF(" Message : %s", msg);                                    \
@@ -864,8 +864,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     const int xEval = !!(x);                                                   \
     if (!(xEval)) {                                                            \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : true\n");                                     \
-      UTEST_PRINTF("    Actual : %s\n", (xEval) ? "true" : "false");           \
+      UTEST_PRINTF("  Expected : true | ");                                     \
+      UTEST_PRINTF("Actual : %s\n", (xEval) ? "true" : "false");           \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -888,8 +888,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     const int xEval = !!(x);                                                   \
     if (xEval) {                                                               \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : false\n");                                    \
-      UTEST_PRINTF("    Actual : %s\n", (xEval) ? "true" : "false");           \
+      UTEST_PRINTF("  Expected : false | ");                                    \
+      UTEST_PRINTF("Actual : %s\n", (xEval) ? "true" : "false");           \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -914,8 +914,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (UTEST_NULL == xEval || UTEST_NULL == yEval ||                          \
         0 != strcmp(xEval, yEval)) {                                           \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : \"%s\"\n", xEval);                            \
-      UTEST_PRINTF("    Actual : \"%s\"\n", yEval);                            \
+      UTEST_PRINTF("  Expected : \"%s\" | ", xEval);                            \
+      UTEST_PRINTF("Actual : \"%s\"\n", yEval);                            \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -940,8 +940,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (UTEST_NULL == xEval || UTEST_NULL == yEval ||                          \
         0 == strcmp(xEval, yEval)) {                                           \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : \"%s\"\n", xEval);                            \
-      UTEST_PRINTF("    Actual : \"%s\"\n", yEval);                            \
+      UTEST_PRINTF("  Expected : \"%s\" | ", xEval);                            \
+      UTEST_PRINTF("Actual : \"%s\"\n", yEval);                            \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -967,8 +967,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (UTEST_NULL == xEval || UTEST_NULL == yEval ||                          \
         0 != UTEST_STRNCMP(xEval, yEval, nEval)) {                             \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : \"%.*s\"\n", UTEST_CAST(int, nEval), xEval);  \
-      UTEST_PRINTF("    Actual : \"%.*s\"\n", UTEST_CAST(int, nEval), yEval);  \
+      UTEST_PRINTF("  Expected : \"%.*s\" | ", UTEST_CAST(int, nEval), xEval);  \
+      UTEST_PRINTF("Actual : \"%.*s\"\n", UTEST_CAST(int, nEval), yEval);  \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -994,8 +994,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (UTEST_NULL == xEval || UTEST_NULL == yEval ||                          \
         0 == UTEST_STRNCMP(xEval, yEval, nEval)) {                             \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : \"%.*s\"\n", UTEST_CAST(int, nEval), xEval);  \
-      UTEST_PRINTF("    Actual : \"%.*s\"\n", UTEST_CAST(int, nEval), yEval);  \
+      UTEST_PRINTF("  Expected : \"%.*s\" | ", UTEST_CAST(int, nEval), xEval);  \
+      UTEST_PRINTF("Actual : \"%.*s\"\n", UTEST_CAST(int, nEval), yEval);  \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -1019,8 +1019,8 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
         utest_fabs(UTEST_CAST(double, x) - UTEST_CAST(double, y));             \
     if (diff > UTEST_CAST(double, epsilon) || utest_isnan(diff)) {             \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
-      UTEST_PRINTF("  Expected : %f\n", UTEST_CAST(double, x));                \
-      UTEST_PRINTF("    Actual : %f\n", UTEST_CAST(double, y));                \
+      UTEST_PRINTF("  Expected : %f\ | ", UTEST_CAST(double, x));                \
+      UTEST_PRINTF("Actual : %f\n", UTEST_CAST(double, y));                \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -1052,7 +1052,7 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (1 != exception_caught) {                                               \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : %s exception\n", #exception_type);            \
-      UTEST_PRINTF("    Actual : %s\n", (2 == exception_caught)                \
+      UTEST_PRINTF("    got : %s\n", (2 == exception_caught)                \
                                             ? "Unexpected exception"           \
                                             : "No exception");                 \
       if (strlen(msg) > 0) {                                                   \
@@ -1098,7 +1098,7 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
     if (1 != exception_caught) {                                               \
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : %s exception\n", #exception_type);            \
-      UTEST_PRINTF("    Actual : %s\n", (2 == exception_caught)                \
+      UTEST_PRINTF("    got : %s\n", (2 == exception_caught)                \
                                             ? "Unexpected exception"           \
                                             : "No exception");                 \
       if (strlen(msg) > 0) {                                                   \
@@ -1112,7 +1112,7 @@ utest_strncpy_gcc(char *const dst, const char *const src, const size_t size) {
       UTEST_PRINTF("%s:%i: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : %s exception with message %s\n",              \
                    #exception_type, exception_message);                        \
-      UTEST_PRINTF("    Actual message : %s\n", message_caught);               \
+      UTEST_PRINTF("    got message : %s\n", message_caught);               \
       if (strlen(msg) > 0) {                                                   \
         UTEST_PRINTF("   Message : %s\n", msg);                                \
       }                                                                        \
@@ -1493,7 +1493,7 @@ int utest_main(int argc, const char *const argv[]) {
             for (index = 0; index < utest_state.tests_length; index++) {
                 UTEST_PRINTF("%s\n", utest_state.tests[index].name);
             }
-            /* when printing the test list, don't actually run the tests */
+            /* when printing the test list, don't gotly run the tests */
             return 0;
         } else if (0 == UTEST_STRNCMP(argv[index], enable_mixed_units_str,
                                       strlen(enable_mixed_units_str))) {
