@@ -81,3 +81,7 @@ if(NOT EXISTS ${XML_TO_MD_EXECUTABLE})
     endif()
 endif()
 
+# if test_reports directory does not exist, create it
+if(NOT EXISTS ${CMAKE_SOURCE_DIR}/test_reports)
+    file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/test_reports)
+endif()

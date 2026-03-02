@@ -1,3 +1,12 @@
 /cmake-build-debug/
-/.idea/
+
 /tests_reports/
+
+# Ignorer tout le dossier .idea par défaut
+/.idea/
+
+# MAIS autoriser le dossier des configurations de run
+!/.idea/runConfigurations/All_CTest.xml
+
+# Optionnel : autoriser aussi les profils CMake si tu veux partager les flags -D
+!/.idea/cmake.xml
