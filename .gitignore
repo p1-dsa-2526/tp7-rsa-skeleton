@@ -6,7 +6,8 @@
 /.idea/
 
 # MAIS autoriser le dossier des configurations de run
-!/.idea/runConfigurations/All_CTest.xml
+!/.idea/workspace.xml
+
 
 # Optionnel : autoriser aussi les profils CMake si tu veux partager les flags -D
 !/.idea/cmake.xml
