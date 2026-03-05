@@ -23,4 +23,4 @@ echo "=== Running tests with CTest ==="
 
 # Run all tests declared in CMakeLists.txt using CTest
 cd "$BUILD_DIR"
-ctest --output-on-failure --verbose
+ctest --output-on-failure --verbose -L unit

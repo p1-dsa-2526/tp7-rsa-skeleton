@@ -10,7 +10,7 @@ UTEST(isprime, test_on_primes)
    int test_values[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
     for (int i = 0; i < sizeof(test_values)/sizeof(test_values[0]); i++)
     {
-         ASSERT_TRUE(isprime(test_values[i]));
+        ASSERT_TRUE(isprime(test_values[i]));
     }
 }
 
@@ -54,9 +54,9 @@ UTEST(generate_large_prime, in_range_300_700_and_is_prime)
     char msg_lower[50];
     char msg_upper[50];
     char msg_prime[50];
-    sprintf(msg_lower, "generated %lu is not >=300 ", prime);
-    sprintf(msg_upper, "generated %lu is not <= 700", prime);
-    sprintf(msg_prime, "test if %lu is prime", prime);
+    sprintf(msg_lower, "generated %llu is not >=300 ", prime);
+    sprintf(msg_upper, "generated %llu is not <= 700", prime);
+    sprintf(msg_prime, "test if %llu is prime", prime);
     UTEST_TRUE(prime <= 700, msg_upper, 1);
     UTEST_TRUE(prime >= 300,msg_lower,1);
     UTEST_TRUE(isprime(prime),msg_prime,1);

@@ -61,7 +61,7 @@ void input_encoded_message(uint64_t* encoded_message) {
     int i = 0;
     uint64_t value;
     printf("Enter the encoded message as a sequence of unsigned integers, ending with 0:\n");
-    while ((scanf("%lu", &value) == 1) && (value != MESSAGE_END)) {
+    while ((scanf("%llu", &value) == 1) && (value != MESSAGE_END)) {
         encoded_message[i++] = value;
     }
     encoded_message[i] = MESSAGE_END; // null terminate the encoded message

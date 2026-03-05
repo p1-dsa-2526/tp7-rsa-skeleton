@@ -520,7 +520,7 @@ template <> struct utest_type_deducer<long, false> {
 };
 
 template <> struct utest_type_deducer<unsigned long, false> {
-  static void _(const unsigned long i) { UTEST_PRINTF("%lu", i); }
+  static void _(const unsigned long i) { UTEST_PRINTF("%llu", i); }
 };
 
 template <> struct utest_type_deducer<long long, false> {
@@ -622,7 +622,7 @@ UTEST_WEAK UTEST_OVERLOADABLE void utest_type_printer(long int i) {
 
 UTEST_WEAK UTEST_OVERLOADABLE void utest_type_printer(long unsigned int i);
 UTEST_WEAK UTEST_OVERLOADABLE void utest_type_printer(long unsigned int i) {
-  UTEST_PRINTF("%lu", i);
+  UTEST_PRINTF("%llu", i);
 }
 
 UTEST_WEAK UTEST_OVERLOADABLE void utest_type_printer(const void *p);
@@ -671,7 +671,7 @@ utest_type_printer(long long unsigned int i) {
       long: "%ld",                                                             \
       long long: "%lld",                                                       \
       unsigned: "%u",                                                          \
-      unsigned long: "%lu",                                                    \
+      unsigned long: "%llu",                                                    \
       unsigned long long: "%llu",                                              \
       float: "%f",                                                             \
       double: "%f",                                                            \

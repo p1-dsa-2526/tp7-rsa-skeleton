@@ -22,8 +22,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe683ab9-47df-4e9f-be84-479f0ab079a3" name="Changes" comment="">
+    <list default="true" id="fe683ab9-47df-4e9f-be84-479f0ab079a3" name="Changes" comment="Update workspace.xml for run configuration and properties management">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encoding.c" beforeDir="false" afterPath="$PROJECT_DIR$/encoding.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsa.c" beforeDir="false" afterPath="$PROJECT_DIR$/rsa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsa.h" beforeDir="false" afterPath="$PROJECT_DIR$/rsa.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/run_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/testing/run_tests.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/test_arithmetic.c" beforeDir="false" afterPath="$PROJECT_DIR$/testing/test_arithmetic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/test_rsa.c" beforeDir="false" afterPath="$PROJECT_DIR$/testing/test_rsa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/utest.h" beforeDir="false" afterPath="$PROJECT_DIR$/testing/utest.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +48,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
@@ -55,6 +66,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "CMake Application.RSA.executor": "Run",
+    "CMake Application.test_arithmetic.executor": "Run",
     "CMake Application.test_rsa.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -67,12 +80,12 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.test_rsa">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="RSA" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="code" TARGET_NAME="RSA" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="code" RUN_TARGET_NAME="RSA">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RSA" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="code" TARGET_NAME="RSA" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="code" RUN_TARGET_NAME="RSA">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -110,13 +123,27 @@
       <updated>1772478234423</updated>
       <workItem from="1772478237752" duration="1363000" />
       <workItem from="1772531531504" duration="212000" />
-      <workItem from="1772653344811" duration="725000" />
+      <workItem from="1772653344811" duration="1770000" />
+      <workItem from="1772715462342" duration="5610000" />
     </task>
+    <task id="LOCAL-00001" summary="Update workspace.xml for run configuration and properties management">
+      <option name="closed" value="true" />
+      <created>1772702285814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772702285814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VCPKGProject">
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update workspace.xml for run configuration and properties management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml for run configuration and properties management" />
   </component>
 </project>

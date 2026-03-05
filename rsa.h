@@ -32,10 +32,11 @@ t_RSA_keys generate_rsa_keys(uint64_t lower, uint64_t upper);
 /**
  * @brief Encrypt a message using the RSA public key.
  * @param message The plaintext message to encrypt.
- * @param keys The RSA keys containing the public key (n, e).
+ * @param expo The public exponent (e) from the RSA keys.
+ * @param n The modulus (n) from the RSA keys.
  * @return The encrypted ciphertext.
  */
-uint64_t rsa_encrypt(uint64_t message, t_RSA_keys keys);
+uint64_t rsa_encrypt(uint64_t message, uint64_t expo, uint64_t n);
 
 /**
  * @brief Decrypt a ciphertext using the RSA private key.
